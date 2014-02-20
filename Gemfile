@@ -7,3 +7,7 @@ gem 'uglifier', '>= 1.3.0'
 gem 'jquery-rails'
 gem 'ember-rails'
 gem 'ember-source', '1.4.0'
+
+group :development, :test do
+  gem 'rspec-rails', '~> 3.0.0.beta'
+end
