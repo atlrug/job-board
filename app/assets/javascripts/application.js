@@ -5,6 +5,7 @@
 //= require_self
 //= require job_board
 
-JobBoard = Ember.Application.create();
+window.App = Ember.Application.create();
+App.deferReadiness();
 
 //= require_tree .
