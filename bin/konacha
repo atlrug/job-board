@@ -1,0 +1,10 @@
+#!/usr/bin/env ruby
+
+require 'bundler'
+Bundler.require
+
+require File.expand_path('../../config/application', __FILE__)
+
+JobBoard::Application.load_tasks
+
+Rake::Task['konacha:run'].invoke
