@@ -10,7 +10,8 @@ gem 'ember-rails'
 gem 'ember-source', '1.4.0'
 
 group :development, :test do
-  gem 'rspec-rails', '~> 3.0.0.beta'
+  gem 'rspec-rails', '~> 2.99.0.beta'
+  gem 'json_spec'
   gem 'konacha'
   gem 'poltergeist'
   gem 'rails-assets-sinonjs'
