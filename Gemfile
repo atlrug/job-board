@@ -13,6 +13,6 @@ group :development, :test do
   gem 'rspec-rails', '~> 3.0.0.beta'
   gem 'konacha'
   gem 'poltergeist'
-  gem 'rails-assets-sinon'
+  gem 'rails-assets-sinonjs'
   gem 'rails-assets-ember-mocha-adapter'
 end
