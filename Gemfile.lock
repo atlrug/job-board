@@ -162,6 +162,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  active_model_serializers
   ember-rails
   ember-source (= 1.4.0)
   jquery-rails
