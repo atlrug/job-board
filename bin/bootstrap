@@ -1,0 +1,82 @@
+#!/usr/bin/env bash
+
+set -e
+
+check_ruby() {
+  echo "=> Checking for Ruby 2.1.0"
+  if ! ruby --version | grep "ruby 2.1.0" 2>&1  > /dev/null; then
+    echo "FAIL"
+    exit
+  fi
+  echo "=>   OK"
+}
+
+check_postgresql() {
+  echo "=> Checking for PostgreSQL 9.3"
+  if ! postgres --version | grep "postgres (PostgreSQL) 9.3" 2>&1 > /dev/null; then
+    echo "FAIL"
+    exit
+  fi
+  echo "=>   OK"
+}
+
+check_phantomjs() {
+  echo "=> Checking for PhantomJS 1.9.7"
+  if ! phantomjs --version | grep "1.9.7" 2>&1 > /dev/null; then
+    echo "FAIL"
+    exit
+  fi
+  echo "=>   OK"
+}
+
+check_dependencies() {
+  check_ruby
+  check_postgresql
+  check_phantomjs
+}
+
+install_gems() {
+  echo "=> Installing gems"
+  bundle install
+}
+
+create_database() {
+  echo "=> Creating database user and databases"
+
+  if ! psql --command "\du job-board" | grep "job-board" 2>&1 > /dev/null; then
+    createuser job-board --superuser
+  fi
+
+  rake db:create:all
+}
+
+setup_database() {
+  echo "=> Setting up development database"
+  bin/rake db:setup
+}
+
+setup_test_environment() {
+  echo "=> Setting up test environment"
+  bin/rake test:prepare
+}
+
+setup_application() {
+  install_gems
+  create_database
+  setup_database
+  setup_test_environment
+}
+
+run_tests() {
+  echo "=> Running test suite"
+  bin/spec
+}
+
+check_dependencies
+setup_application
+run_tests
+
+echo
+echo "Yay! You're good to go. <3"
+
+set +e

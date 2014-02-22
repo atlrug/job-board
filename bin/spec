@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
 
 ['bin/rspec', 'bin/konacha'].each do |script|
-  return unless system(script)
+  exit 1 unless system(script)
 end
