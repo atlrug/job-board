@@ -1,0 +1,28 @@
+.job-list {
+  list-style: none;
+  padding: 0;
+}
+
+.job-list-item {
+  padding: 30px 60px;
+
+  h2 {
+    color: $blue;
+    transition: color 0.15s ease;
+    font-size: 36px;
+  }
+
+  p {
+    font-size: 18px;
+  }
+
+  &:hover {
+    h2 {
+      color: $blue-highlight;
+    }
+
+    box-shadow: 0 1px 3px $light-gray;
+    box-sizing: border-box;
+    outline: 1px solid $light-gray-highlight;
+  }
+}
