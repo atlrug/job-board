@@ -1,5 +1,7 @@
-// For more information see: http://emberjs.com/guides/routing/
+App.Router.reopen({
+  location: 'history'
+});
 
 App.Router.map(function() {
-  // this.resource('posts');
+  this.resource('jobs', { path: '/' });
 });
