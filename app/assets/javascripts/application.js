@@ -6,6 +6,5 @@
 //= require job_board
 
 window.App = Ember.Application.create();
-App.deferReadiness();
 
 //= require_tree .
